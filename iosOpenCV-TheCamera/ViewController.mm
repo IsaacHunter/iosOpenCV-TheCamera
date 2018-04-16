@@ -57,10 +57,12 @@ using namespace cv;
 - (void)processImage:(cv::Mat &)image;
 {
     // Convert the image to grayscale
-    Mat gray; cvtColor(image, gray, CV_BGRA2GRAY);
+    Mat gray; cvtColor(image, gray, CV_BGRA2RGB);
+    
+    rectangle(gray, cv::Point(0.2*image.cols,0.2*image.rows), cv::Point(0.8*image.cols,0.8*image.rows), cv::Scalar(255,0,0),5);
     
     //Copy it back to image
-    cvtColor(gray, image, CV_GRAY2BGRA);
+    cvtColor(gray, image, CV_RGB2BGRA);
 }
 
 - (void)didReceiveMemoryWarning {
